@@ -1,19 +1,23 @@
 // Variables
 
-const fixExtensionItemButtons = $(".fix-extension-item .button");
+const fixedExtensionItemButtons = document.querySelectorAll(
+  ".fixed-extension-item .button"
+);
 
-const customExtensionInput = $(".custom-extension-input-area > input");
-const addButton = $(".add-button");
-let deleteButtons = $(".delete");
+const customExtensionInput = document.querySelector(
+  ".custom-extension-input-area > input"
+);
+const addButton = document.querySelector(".add-button");
+let deleteButtons = document.querySelectorAll(".delete");
 
 const fileInput = document.getElementById("file");
-const fileText = $(".file > span");
-const submitButton = $(".submit");
+const fileText = document.querySelector(".file > span");
+const submitButton = document.querySelector(".submit");
 
-const resetButtons = $(".reset-button");
+const resetButtons = document.querySelectorAll(".reset-button");
 
 const Type = {
-  Fix: "F",
+  Fixed: "F",
   Custom: "C",
 };
 
@@ -22,7 +26,7 @@ const Type = {
 /**
  * 고정 확장자 버튼 클릭 이벤트
  * */
-fixExtensionItemButtons.forEach((button) => {
+fixedExtensionItemButtons.forEach((button) => {
   button.addEventListener("click", function () {
     // 스타일 적용
     this.classList.toggle("active");
@@ -95,12 +99,12 @@ deleteButtons.forEach((delButton) => {
  */
 resetButtons.forEach((button) => {
   button.addEventListener("click", function () {
-    if (this.classList.contains("fix")) {
+    if (this.classList.contains("fixed")) {
       // DB 초기화
       resetFixedExtension();
 
       // 스타일 수정
-      fixExtensionItemButtons.forEach((item) => {
+      fixedExtensionItemButtons.forEach((item) => {
         item.classList.remove("active");
       });
     } else if (this.classList.contains("custom")) {
@@ -118,6 +122,38 @@ resetButtons.forEach((button) => {
   });
 });
 
+/**
+ * 파일 업로드 시 파일명 표기
+ */
+// fileInput.addEventListener("change", function () {
+//   if (fileInput.files.length > 0) {
+//     const fileName = fileInput.files[0].name;
+//
+//     // 표시 문구 변경 및 스타일 활성화
+//     fileText.textContent = fileName;
+//     submitButton.classList.add("active");
+//   } else {
+//     // 표시 문구 변경 및 스타일 활성화
+//     fileText.textContent = "파일 선택하기";
+//     submitButton.classList.remove("active");
+//   }
+// });
+//
+// /**
+//  * 파일 업로드 제출 버튼 클릭 시 유효성 검사
+//  */
+// submitButton.addEventListener("click", function () {
+//   const fileList = fileInput.files;
+//
+//   if (fileList.length > 0) {
+//     const fileNameArray = fileList[0].name.split(".");
+//     const extensionName = fileNameArray[fileNameArray.length - 1];
+//
+//     checkValidExtension(extensionName);
+//   } else {
+//     alert("파일을 선택해주세요");
+//   }
+// });
 
 // Functions
 
@@ -128,7 +164,7 @@ resetButtons.forEach((button) => {
  */
 function updateExtensionChecked(extensionName, isChecked) {
   $.ajax({
-    url: "fix/update",
+    url: "fixed/update",
     type: "POST",
     data: { name: extensionName, checked: isChecked },
     success: function (result) {
@@ -149,7 +185,7 @@ function updateExtensionChecked(extensionName, isChecked) {
  */
 function resetFixedExtension() {
   $.ajax({
-    url: "fix/reset",
+    url: "fixed/reset",
     type: "POST",
     success: function (result) {
       if (result === true) {
@@ -189,9 +225,10 @@ function resetCustomExtension() {
  */
 function addCustomExtension(newCustomName) {
   $.ajax({
-    url: "custom/add",
-    data: { name: newCustomName },
+    url: "custom/",
+    data: JSON.stringify({ name: newCustomName }),
     type: "POST",
+    contentType: "application/json", // 추가된 부분
     success: function (result) {
       if (result === true) {
         console.log("커스텀 확장자 추가 성공");
@@ -231,11 +268,10 @@ function extensionValidateCheck(name) {
  */
 function deleteCustomExtension(extensionName) {
   $.ajax({
-    url: "custom/delete",
-    data: {
-      name: extensionName,
-    },
-    type: "POST",
+    url: "custom/",
+    data: JSON.stringify({name: extensionName,}),
+    type: "DELETE",
+    contentType: "application/json", // 추가된 부분
     success: function () {
       console.log("custom 삭제 성공");
       location.reload();
@@ -250,22 +286,22 @@ function deleteCustomExtension(extensionName) {
  * 파일 제출 시 확장자명 유효성 검사
  * @param fileExtensionName
  */
-function checkValidExtension(fileExtensionName) {
-  $.ajax({
-    url: "checkValidExtension",
-    data: {
-      name: fileExtensionName,
-    },
-    type: "POST",
-    success: function (result) {
-      if (result === true) {
-        alert("제출 성공");
-      } else {
-        alert("제한된 확장자 입니다.");
-      }
-    },
-    error: function () {
-      console.log("checkValidExtension 실패");
-    },
-  });
-}
+// function checkValidExtension(fileExtensionName) {
+//   $.ajax({
+//     url: "checkValidExtension",
+//     data: {
+//       name: fileExtensionName,
+//     },
+//     type: "POST",
+//     success: function (result) {
+//       if (result === true) {
+//         alert("제출 성공");
+//       } else {
+//         alert("제한된 확장자 입니다.");
+//       }
+//     },
+//     error: function () {
+//       console.log("checkValidExtension 실패");
+//     },
+//   });
+// }

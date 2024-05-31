@@ -85,7 +85,7 @@ body {
 
   border-bottom: 1px solid var(--border);
   padding-bottom: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .reset-button {
@@ -126,12 +126,13 @@ body {
 
 .fix-extension-item > label:hover,
 .add-button:hover,
+.fix-extension-add-button:hover,
 .submit:hover,
 .submit.active {
-  /*background-color: var(--primary);*/
-  /*color: var(--white);*/
-  /*box-shadow: var(--button-shadow);*/
-  /*transition: all 0.15s ease-in-out;*/
+  background-color: var(--primary);
+  color: var(--white);
+  box-shadow: var(--button-shadow);
+  transition: all 0.15s ease-in-out;
 }
 
 .add-button:hover > i {
@@ -156,6 +157,30 @@ body {
 .valid-check-info > i {
   margin-right: 8px;
 }
+.fix-extension-input-area {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+.fix-extension-input-area > input {
+  height: 40px;
+
+  padding: 8px;
+  padding-left: 24px;
+  margin-right: 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 4px;
+
+  flex-basis: 80%;
+}
+
+.fix-extension-input-area > input::placeholder {
+  color: var(--border);
+}
+
 
 .custom-extension-input-area {
   display: flex;
@@ -195,6 +220,20 @@ body {
   margin-right: 8px;
 }
 
+.fix-extension-add-button {
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-basis: 20%;
+}
+
+.fix-extension-add-button > i {
+  margin-right: 8px;
+}
+
 .custom-extension-saved-area {
   width: 600px;
   max-height: 300px;
@@ -205,7 +244,10 @@ body {
   border: 1px solid var(--border);
   border-radius: 4px;
 }
-
+.fix-extension-count {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
 .custom-extension-count {
   font-size: 14px;
   margin-bottom: 16px;

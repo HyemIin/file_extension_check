@@ -1,8 +1,8 @@
-package com.flowhyemin.extensionfilter.domain.fixextension.controller;
+package com.flowhyemin.extensionfilter.global.controller;
 
-import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionGetResponse;
-import com.flowhyemin.extensionfilter.domain.fixextension.entity.FixExtension;
+import com.flowhyemin.extensionfilter.domain.customextension.entity.CustomExtension;
 import com.flowhyemin.extensionfilter.domain.customextension.service.CustomExtensionService;
+import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionGetResponse;
 import com.flowhyemin.extensionfilter.domain.fixextension.service.FixExtensionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         List<FixExtensionGetResponse> fixExtensionList = fixExtensionService.findAllFixExtension();
-        List<FixExtension> customList = customExtensionService.findAllCustomExtension();
+        List<CustomExtension> customList = customExtensionService.findAllCustomExtension();
 
         model.addAttribute("fixList", fixExtensionList);
         model.addAttribute("customList", customList);

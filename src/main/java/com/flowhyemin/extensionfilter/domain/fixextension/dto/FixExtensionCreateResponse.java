@@ -7,12 +7,14 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class FixExtensionGetResponse {
+public class FixExtensionCreateResponse {
+    private Long id;
     private String name;
     private Boolean isChecked;
 
-    public static FixExtensionGetResponse fromEntity(FixExtension fixExtension) {
-        return FixExtensionGetResponse.builder()
+    public static FixExtensionCreateResponse fromEntity(FixExtension fixExtension) {
+        return FixExtensionCreateResponse.builder()
+            .id(fixExtension.getId())
             .name(fixExtension.getName())
             .isChecked(fixExtension.getIsChecked())
             .build();

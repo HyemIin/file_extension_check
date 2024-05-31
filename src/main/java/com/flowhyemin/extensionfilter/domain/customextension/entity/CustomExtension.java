@@ -1,11 +1,13 @@
 package com.flowhyemin.extensionfilter.domain.customextension.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import org.hibernate.annotations.ColumnDefault;
+import lombok.*;
 
 @Entity
 @Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class CustomExtension {
 
     @Id
