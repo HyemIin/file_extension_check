@@ -1,8 +1,6 @@
 package com.flowhyemin.extensionfilter.domain.fixextension.service;
 
-import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionCreateRequest;
-import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionCreateResponse;
-import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionGetResponse;
+import com.flowhyemin.extensionfilter.domain.fixextension.dto.*;
 import com.flowhyemin.extensionfilter.domain.fixextension.entity.FixExtension;
 import com.flowhyemin.extensionfilter.domain.fixextension.repository.FixExtensionRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +26,11 @@ public class FixExtensionService {
         FixExtension fixExtension = fixExtensionCreateRequest.toEntity();
         fixExtensionRepository.save(fixExtension);
         return FixExtensionCreateResponse.fromEntity(fixExtension);
+    }
+    @Transactional
+    public FixExtensionDeleteResponse deleteFixExtension(FixExtensionDeleteRequest fixExtensionDeleteRequest) {
+        FixExtension fixExtension = fixExtensionDeleteRequest.toEntity();
+        fixExtensionRepository.deleteByName(fixExtensionDeleteRequest.getName());
+        return FixExtensionDeleteResponse.fromEntity(fixExtension);
     }
 }

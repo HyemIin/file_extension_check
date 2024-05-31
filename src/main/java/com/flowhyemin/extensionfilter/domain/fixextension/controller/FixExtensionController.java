@@ -1,14 +1,11 @@
 package com.flowhyemin.extensionfilter.domain.fixextension.controller;
 
 import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionCreateRequest;
-import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionCreateResponse;
+import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionDeleteRequest;
 import com.flowhyemin.extensionfilter.domain.fixextension.service.FixExtensionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,4 +19,11 @@ public class FixExtensionController {
         fixExtensionService.createFixExtension(fixExtensionCreateRequest);
         return true;
     }
+    @DeleteMapping("/")
+    @ResponseBody
+    public boolean deleteFixExtension(@RequestBody FixExtensionDeleteRequest fixExtensionDeleteRequest) {
+        fixExtensionService.deleteFixExtension(fixExtensionDeleteRequest);
+        return true;
+    }
+
 }
