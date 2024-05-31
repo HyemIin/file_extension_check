@@ -7,7 +7,11 @@ const fixedExtensionItemButtons = document.querySelectorAll(
 const customExtensionInput = document.querySelector(
   ".custom-extension-input-area > input"
 );
+const fixExtensionInput = document.querySelector(
+    ".fix-extension-input-area > input"
+);
 const addButton = document.querySelector(".add-button");
+const addFixButton = document.querySelector(".fix-extension-add-button");
 let deleteButtons = document.querySelectorAll(".delete");
 
 const fileInput = document.getElementById("file");
@@ -51,7 +55,26 @@ customExtensionInput.addEventListener("input", function (event) {
     addButton.classList.add("active");
   }
 });
+/**
+ * 고정 확장자 추가 버튼 클릭 시 추가
+ */
+addFixButton.addEventListener("click", function () {
+  const newFixName = fixExtensionInput.value;
+  const fixCount = document.querySelector(".fix-current").textContent;
 
+  // 고정 확장자 수 20개 이상 등록 방지
+  if (fixCount == 20) {
+    fixExtensionInput.value = "";
+    alert("고장 확장자 최대 저장 횟수를 초과하였습니다.");
+  } else {
+    if (extensionValidateCheck(newFixName)) {
+      addFixExtension(newFixName);
+    } else {
+      alert("영문 대소문자를 입력해주세요! (한글, 공백, 특수문자 입력 불가)");
+      fixExtensionInput.value = "";
+    }
+  }
+});
 /**
  * 커스텀 확장자 추가 버튼 클릭 시 추가
  */
@@ -237,6 +260,34 @@ function addCustomExtension(newCustomName) {
         console.log("커스텀 확장자 추가 실패");
         customExtensionInput.value = "";
         alert("고정 확장자 기능을 이용해주세요!");
+      }
+    },
+    error: function () {
+      customExtensionInput.value = "";
+      alert("이미 추가된 확장자입니다!");
+      console.log("커스텀 확장자 추가 요청 실패");
+    },
+  });
+}
+
+/**
+ * 고정 확장자 추가 요청
+ * @param newFixName
+ */
+function addFixExtension(newFixName) {
+  $.ajax({
+    url: "fix/",
+    data: JSON.stringify({ name: newFixName }),
+    type: "POST",
+    contentType: "application/json", // 추가된 부분
+    success: function (result) {
+      if (result === true) {
+        console.log("고정 확장자 추가 성공");
+        location.reload();
+      } else {
+        console.log("고정 확장자 추가 실패");
+        customExtensionInput.value = "";
+        // alert("고정 확장자 기능을 이용해주세요!");
       }
     },
     error: function () {

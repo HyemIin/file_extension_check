@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomExtensionService {
     private final CustomExtensionRepository customExtensionRepository;
+    @Transactional(readOnly = true)
     public List<CustomExtension> findAllCustomExtension() {
         return customExtensionRepository.findAll();
     }
