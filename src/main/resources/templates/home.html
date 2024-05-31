@@ -34,30 +34,22 @@
             <label th:text="${fix.name}">
               FixExtensionName
             </label>
-
           </li>
         </ul>
         <br>
         <div class="fix-extension-input-area">
           <input
                   type="text"
-                  placeholder="추가할 확장자를 입력해주세요"
+                  placeholder="추가/삭제할 확장자를 입력해주세요"
                   maxlength="20"
           />
           <button class="fix-extension-add-button button">
-            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-square-plus"></i>
             추가
           </button>
-        </div>
-        <div class="fix-extension-input-area">
-          <input
-                  type="text"
-                  placeholder="삭제할 확장자를 입력해주세요"
-                  maxlength="20"
-          />
-          <button class="fix-extension-add-button button">
-            <i class="fa-solid fa-plus"></i>
-            추가
+          <button class="fix-extension-delete-button button">
+            <i class="fa-solid fa-trash"></i>
+            삭제
           </button>
         </div>
       </section>
@@ -85,7 +77,7 @@
             maxlength="20"
           />
           <button class="add-button button">
-            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-square-plus"></i>
             추가
           </button>
         </div>
@@ -105,7 +97,7 @@
                 >CustomExtensionName</span
               >
               <button class="delete">
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-trash"></i>
               </button>
             </li>
           </ul>

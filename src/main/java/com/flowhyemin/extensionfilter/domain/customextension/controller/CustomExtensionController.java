@@ -18,14 +18,14 @@ public class CustomExtensionController {
     @PostMapping("/")
     @ResponseBody
     public boolean createFixExtension(@RequestBody CustomExtensionCreateRequest customExtensionCreateRequest) {
-        CustomExtensionCreateResponse customExtensionCreateResponse = customExtensionService.createCustomExtension(customExtensionCreateRequest);
+        customExtensionService.createCustomExtension(customExtensionCreateRequest);
         return true;
     }
 
     @DeleteMapping("/")
     @ResponseBody
     public boolean deleteFixExtension(@RequestBody CustomExtensionDeleteRequest customExtensionDeleteRequest) {
-        CustomExtensionDeleteResponse customExtensionDeleteResponse = customExtensionService.deleteCustomExtension(customExtensionDeleteRequest);
+        customExtensionService.deleteCustomExtension(customExtensionDeleteRequest);
         return true;
     }
 }

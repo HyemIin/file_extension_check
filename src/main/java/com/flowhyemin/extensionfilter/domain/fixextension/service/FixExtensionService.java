@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FixExtensionService {
     private final FixExtensionRepository fixExtensionRepository;
-    @Transactional
+    @Transactional(readOnly = true)
     public List<FixExtensionGetResponse> findAllFixExtension() {
         return fixExtensionRepository.findAll().stream()
             .map(FixExtensionGetResponse::fromEntity)

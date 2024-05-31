@@ -6,7 +6,9 @@ import com.flowhyemin.extensionfilter.domain.fixextension.service.FixExtensionSe
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -15,8 +17,9 @@ public class FixExtensionController {
     private final FixExtensionService fixExtensionService;
 
     @PostMapping("/")
-    public String createFixExtension(FixExtensionCreateRequest fixExtensionCreateRequest) {
-        FixExtensionCreateResponse fixExtensionCreateResponse = fixExtensionService.createFixExtension(fixExtensionCreateRequest);
-        return "home";
+    @ResponseBody
+    public boolean createFixExtension(@RequestBody FixExtensionCreateRequest fixExtensionCreateRequest) {
+        fixExtensionService.createFixExtension(fixExtensionCreateRequest);
+        return true;
     }
 }
