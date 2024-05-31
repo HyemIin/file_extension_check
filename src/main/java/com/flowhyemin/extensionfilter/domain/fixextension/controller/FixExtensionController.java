@@ -1,4 +1,4 @@
-package com.flowhyemin.extensionfilter.domain.extension.controller;
+package com.flowhyemin.extensionfilter.domain.fixextension.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

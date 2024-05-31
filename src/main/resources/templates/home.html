@@ -13,30 +13,29 @@
   </head>
   <body>
     <div class="container">
-
-      <section class="fix-extension">
+      <H2>파일 확장자 차단 시스템</H2> <br>
+      <section class="fix-fixExtension">
         <div class="section-header">
           <h3 class="section-title">고정 확장자</h3>
         </div>
 
-        <ul class="fix-extension-list">
-          <li class="fix-extension-item" th:each="fix : ${fixList}">
+        <ul class="fix-fixExtension-list">
+          <li class="fix-fixExtension-item" th:each="fix : ${fixList}">
             <input
               type="checkbox"
               th:name="${fix.name}"
               th:id="${fix.name}"
+              th:value="${fix.name}"
             />
+            <label th:text="${fix.name}">
+              FixExtensionName
+            </label>
 
-            <label
-              th:text="${fix.name}"
-              th:class="${fix.checked == 'Y'} ? 'button active' : 'button'"
-              >fixExtensionName</label
-            >
           </li>
         </ul>
       </section>
 
-      <section class="custom-extension">
+      <section class="custom-fixExtension">
         <div class="section-header">
           <h3 class="section-title">커스텀 확장자</h3>
           <div class="reset-button custom">
@@ -52,7 +51,7 @@
           >
         </div>
 
-        <div class="custom-extension-input-area">
+        <div class="custom-fixExtension-input-area">
           <input
             type="text"
             placeholder="확장자를 입력해주세요"
@@ -64,18 +63,14 @@
           </button>
         </div>
 
-        <div class="custom-extension-saved-area">
-          <div class="custom-extension-count">
-<!--            <span class="current" th:text="${#lists.size(customList)}">0</span>-->
-            / 200
-          </div>
+        <div class="custom-fixExtension-saved-area">
 
-          <ul class="custom-extension-list">
+          <ul class="custom-fixExtension-list">
             <li
-              class="custom-extension-item button"
+              class="custom-fixExtension-item button"
               th:each="custom : ${customList}"
             >
-              <span class="custom-extension-name" th:text="${custom.name}"
+              <span class="custom-fixExtension-name" th:text="${custom.name}"
                 >CustomExtensionName</span
               >
               <button class="delete">
@@ -83,6 +78,10 @@
               </button>
             </li>
           </ul>
+          <div class="custom-fixExtension-count">
+            <!--            <span class="current" th:text="${#lists.size(customList)}">0</span>-->
+            / 200
+          </div>
         </div>
       </section>
     </div>
