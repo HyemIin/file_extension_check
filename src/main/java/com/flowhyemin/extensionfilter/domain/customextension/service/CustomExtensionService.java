@@ -33,4 +33,8 @@ public class CustomExtensionService {
         customExtensionRepository.deleteByName(customExtensionDeleteRequest.getName());
         return CustomExtensionDeleteResponse.fromEntity(customExtension);
     }
+    @Transactional
+    public void deleteAllCustomExtension() {
+        customExtensionRepository.deleteAll();
+    }
 }

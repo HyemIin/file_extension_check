@@ -116,7 +116,12 @@ deleteFixByButton.addEventListener("click", function () {
   if (fixExtensionName) {
     extensionValidateCheck(fixExtensionName)
   }
+  if (confirm("입력하신 고정 확장자를 리스트에서 삭제하시겠습니까?")) {
     deleteFixExtension(fixExtensionName);
+  } else {
+    return false;
+  }
+
   });
 
 /**
@@ -135,7 +140,7 @@ deleteButtons.forEach((delButton) => {
  */
 resetButtons.forEach((button) => {
   button.addEventListener("click", function () {
-    if (this.classList.contains("fixed")) {
+    if (this.classList.contains("fix")) {
       // DB 초기화
       resetFixedExtension();
 
@@ -144,8 +149,12 @@ resetButtons.forEach((button) => {
         item.classList.remove("active");
       });
     } else if (this.classList.contains("custom")) {
-      // DB 초기화
-      resetCustomExtension();
+      if (confirm("삭제 시 복구할 수 없습니다.\n커스텀 확장자를 모두 삭제하시겠습니까?")) {
+        // DB 초기화
+        resetCustomExtension();
+      } else {
+        return false;
+      }
 
       // 확장자 수 초기화
       const currentCount = document.querySelector(".current");
@@ -240,8 +249,8 @@ function resetCustomExtension() {
   console.log("resetCustomExtension 호출");
 
   $.ajax({
-    url: "custom/reset",
-    type: "POST",
+    url: "custom/reset/",
+    type: "DELETE",
     success: function (result) {
       if (result === true) {
         console.log("커스텀 확장자 초기화 성공");

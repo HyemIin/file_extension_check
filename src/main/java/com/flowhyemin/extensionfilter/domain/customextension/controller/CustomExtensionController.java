@@ -28,4 +28,11 @@ public class CustomExtensionController {
         customExtensionService.deleteCustomExtension(customExtensionDeleteRequest);
         return true;
     }
+
+    @DeleteMapping("/reset/")
+    @ResponseBody
+    public boolean deleteAllCustomExtension() {
+        customExtensionService.deleteAllCustomExtension();
+        return true;
+    }
 }
