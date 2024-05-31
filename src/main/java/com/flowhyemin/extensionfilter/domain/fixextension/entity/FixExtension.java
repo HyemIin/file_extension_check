@@ -1,11 +1,14 @@
 package com.flowhyemin.extensionfilter.domain.fixextension.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class FixExtension {
 
     @Id
@@ -15,5 +18,5 @@ public class FixExtension {
     private String name;
     @Column(nullable = false)
     @ColumnDefault("false")
-    private Boolean isFixed;
+    private Boolean isChecked;
 }

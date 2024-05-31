@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class CustomExtensionCreateRequest {
+public class CustomExtensionDeleteRequest {
     private String name;
 
     public CustomExtension toEntity() {
