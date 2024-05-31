@@ -11,7 +11,8 @@ const fixExtensionInput = document.querySelector(
     ".fix-extension-input-area > input"
 );
 const addButton = document.querySelector(".add-button");
-const addFixButton = document.querySelector(".fix-extension-add-button");
+const addFixByButton = document.querySelector(".fix-extension-add-button");
+const deleteFixByButton = document.querySelector(".fix-extension-delete-button");
 let deleteButtons = document.querySelectorAll(".delete");
 
 const fileInput = document.getElementById("file");
@@ -58,7 +59,7 @@ customExtensionInput.addEventListener("input", function (event) {
 /**
  * 고정 확장자 추가 버튼 클릭 시 추가
  */
-addFixButton.addEventListener("click", function () {
+addFixByButton.addEventListener("click", function () {
   const newFixName = fixExtensionInput.value;
   const fixCount = document.querySelector(".fix-current").textContent;
 
@@ -75,6 +76,7 @@ addFixButton.addEventListener("click", function () {
     }
   }
 });
+
 /**
  * 커스텀 확장자 추가 버튼 클릭 시 추가
  */
@@ -105,6 +107,17 @@ customExtensionInput.addEventListener("keyup", function (event) {
     addButton.click();
   }
 });
+
+/**
+ * 고정 확장자 삭제 버튼 클릭 시 삭제
+ * */
+deleteFixByButton.addEventListener("click", function () {
+    const fixExtensionName = fixExtensionInput.value;
+  if (fixExtensionName) {
+    extensionValidateCheck(fixExtensionName)
+  }
+    deleteFixExtension(fixExtensionName);
+  });
 
 /**
  * 커스텀 확장자 삭제 버튼 클릭 시 삭제
@@ -311,6 +324,26 @@ function extensionValidateCheck(name) {
   } else {
     return false;
   }
+}
+
+/**
+ * 고정 확장자 삭제 요청
+ * @param extensionName
+ */
+function deleteFixExtension(extensionName) {
+  $.ajax({
+    url: "fix/",
+    data: JSON.stringify({name: extensionName,}),
+    type: "DELETE",
+    contentType: "application/json", // 추가된 부분
+    success: function () {
+      console.log("fix 삭제 성공");
+      location.reload();
+    },
+    error: function () {
+      console.log("fix 삭제 실패");
+    },
+  });
 }
 
 /**
