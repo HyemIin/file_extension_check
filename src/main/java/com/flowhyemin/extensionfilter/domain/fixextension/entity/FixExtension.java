@@ -19,4 +19,8 @@ public class FixExtension {
     @Column(nullable = false)
     @ColumnDefault("false")
     private Boolean isChecked;
+
+    public void updateFixExtension(Boolean isChecked) {
+        this.isChecked = isChecked;
+    }
 }
