@@ -1,9 +1,8 @@
 // Variables
 
 const fixedExtensionItemButtons = document.querySelectorAll(
-  ".fixed-extension-item .button"
+  ".fix-extension-item .button"
 );
-
 const customExtensionInput = document.querySelector(
   ".custom-extension-input-area > input"
 );
@@ -31,18 +30,22 @@ const Type = {
 /**
  * 고정 확장자 버튼 클릭 이벤트
  * */
-fixedExtensionItemButtons.forEach((button) => {
-  button.addEventListener("click", function () {
+fixedExtensionItemButtons.forEach((checkbox) => {
+  checkbox.addEventListener("click", function () {
     // 스타일 적용
     this.classList.toggle("active");
 
     // Ajax 요청
-    const extensionName = this.textContent;
-    let isChecked = this.classList.contains("active") ? "N" : "Y";
-
+    const extensionName = this.name // 문자열 어떻게 가져올지 체크 필요
+    let isChecked = this.classList.contains("active") ? "true" : "false";
     updateExtensionChecked(extensionName, isChecked);
   });
 });
+
+/**
+ * 고정 확장자 체크박스 클릭 이벤트
+ * */
+
 
 /**
  * 커스텀 확장자 입력 시 버튼 스타일 활성화
@@ -209,9 +212,10 @@ resetButtons.forEach((button) => {
  */
 function updateExtensionChecked(extensionName, isChecked) {
   $.ajax({
-    url: "fixed/update",
-    type: "POST",
-    data: { name: extensionName, checked: isChecked },
+    url: "fix/check/",
+    type: "PUT",
+    data: JSON.stringify({ name: extensionName, isChecked: isChecked }),
+    contentType: "application/json",
     success: function (result) {
       if (result === true) {
         console.log("고정 확장자 checked 업데이트 성공");

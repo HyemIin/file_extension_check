@@ -28,9 +28,15 @@ public class FixExtensionService {
         return FixExtensionCreateResponse.fromEntity(fixExtension);
     }
     @Transactional
+    public void checkFixExtension(FixExtensionCheckRequest fixExtensionCheckRequest) {
+        FixExtension fixExtension = fixExtensionRepository.findByName(fixExtensionCheckRequest.getName());
+        fixExtension.updateFixExtension(fixExtensionCheckRequest.getIsChecked());
+    }
+    @Transactional
     public FixExtensionDeleteResponse deleteFixExtension(FixExtensionDeleteRequest fixExtensionDeleteRequest) {
         FixExtension fixExtension = fixExtensionDeleteRequest.toEntity();
         fixExtensionRepository.deleteByName(fixExtensionDeleteRequest.getName());
         return FixExtensionDeleteResponse.fromEntity(fixExtension);
     }
+
 }

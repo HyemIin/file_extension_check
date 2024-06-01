@@ -29,10 +29,13 @@
               type="checkbox"
               th:name="${fix.name}"
               th:id="${fix.name}"
-              th:value="${fix.name}"
+              th:class="${fix.isChecked == true} ? 'button active' : 'button'"
             />
-            <label th:text="${fix.name}">
-              FixExtensionName
+
+            <label
+                   th:text="${fix.name}"
+            >
+            FixExtensionName
             </label>
           </li>
         </ul>

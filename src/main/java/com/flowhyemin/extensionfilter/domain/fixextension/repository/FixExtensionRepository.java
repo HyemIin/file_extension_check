@@ -9,6 +9,8 @@ public interface FixExtensionRepository extends JpaRepository<FixExtension,Long>
 
     List<FixExtension> findAllByIsChecked(Boolean ischecked);
 
+    FixExtension findByName(String name);
+
 
     void deleteByName(String name);
 }
