@@ -29,7 +29,8 @@
               type="checkbox"
               th:name="${fix.name}"
               th:id="${fix.name}"
-              th:class="${fix.isChecked == true} ? 'button active' : 'button'"
+              th:class="${fix.isChecked == 'true'} ? 'button active' : 'button'"
+              th:checked="${fix.isChecked}"
             />
 
             <label

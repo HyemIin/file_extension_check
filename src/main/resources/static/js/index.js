@@ -1,6 +1,6 @@
 // Variables
 
-const fixedExtensionItemButtons = document.querySelectorAll(
+const fixExtensionItemButtons = document.querySelectorAll(
   ".fix-extension-item .button"
 );
 const customExtensionInput = document.querySelector(
@@ -14,24 +14,16 @@ const addFixByButton = document.querySelector(".fix-extension-add-button");
 const deleteFixByButton = document.querySelector(".fix-extension-delete-button");
 let deleteButtons = document.querySelectorAll(".delete");
 
-const fileInput = document.getElementById("file");
-const fileText = document.querySelector(".file > span");
-const submitButton = document.querySelector(".submit");
 
 const resetButtons = document.querySelectorAll(".reset-button");
-
-const Type = {
-  Fixed: "F",
-  Custom: "C",
-};
 
 // Events
 
 /**
- * 고정 확장자 버튼 클릭 이벤트
+ * 고정 확장자 체크박스 클릭 이벤트
  * */
-fixedExtensionItemButtons.forEach((checkbox) => {
-  checkbox.addEventListener("click", function () {
+fixExtensionItemButtons.forEach((checkbox) => {
+  checkbox.addEventListener("click", function (event) {
     // 스타일 적용
     this.classList.toggle("active");
 
@@ -41,10 +33,6 @@ fixedExtensionItemButtons.forEach((checkbox) => {
     updateExtensionChecked(extensionName, isChecked);
   });
 });
-
-/**
- * 고정 확장자 체크박스 클릭 이벤트
- * */
 
 
 /**

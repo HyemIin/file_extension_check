@@ -15,7 +15,7 @@ public class FixExtensionCreateRequest {
     public FixExtension toEntity() {
         return FixExtension.builder()
             .name(name)
-            .isChecked(false)
+            .isChecked("false")
             .build();
     }
 }
