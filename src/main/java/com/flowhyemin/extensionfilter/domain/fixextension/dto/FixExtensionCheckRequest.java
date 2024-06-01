@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FixExtensionCheckRequest {
     private String name;
-    private Boolean isChecked;
+    private String isChecked;
 
     public FixExtension toEntity() {
         return FixExtension.builder()

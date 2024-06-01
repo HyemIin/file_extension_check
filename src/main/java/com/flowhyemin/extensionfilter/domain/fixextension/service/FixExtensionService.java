@@ -16,7 +16,7 @@ public class FixExtensionService {
     private final FixExtensionRepository fixExtensionRepository;
     @Transactional(readOnly = true)
     public List<FixExtensionGetResponse> findAllFixExtension() {
-        return fixExtensionRepository.findAll().stream()
+        return fixExtensionRepository.findAllByOrderByIdAsc().stream()
             .map(FixExtensionGetResponse::fromEntity)
             .collect(Collectors.toList());
     }
