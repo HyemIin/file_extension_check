@@ -14,12 +14,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FixExtensionService {
     private final FixExtensionRepository fixExtensionRepository;
-    @Transactional(readOnly = true)
-    public List<FixExtensionGetResponse> findAllFixExtension() {
-        return fixExtensionRepository.findAllByOrderByIdAsc().stream()
-            .map(FixExtensionGetResponse::fromEntity)
-            .collect(Collectors.toList());
-    }
 
     @Transactional
     public FixExtensionCreateResponse createFixExtension(FixExtensionCreateRequest fixExtensionCreateRequest) {
@@ -37,6 +31,12 @@ public class FixExtensionService {
         FixExtension fixExtension = fixExtensionDeleteRequest.toEntity();
         fixExtensionRepository.deleteByName(fixExtensionDeleteRequest.getName());
         return FixExtensionDeleteResponse.fromEntity(fixExtension);
+    }
+    @Transactional(readOnly = true)
+    public List<FixExtensionGetResponse> findAllFixExtension() {
+        return fixExtensionRepository.findAllByOrderByIdAsc().stream()
+            .map(FixExtensionGetResponse::fromEntity)
+            .collect(Collectors.toList());
     }
 
 }

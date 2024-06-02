@@ -1,9 +1,6 @@
 package com.flowhyemin.extensionfilter.domain.customextension.service;
 
-import com.flowhyemin.extensionfilter.domain.customextension.dto.CustomExtensionCreateRequest;
-import com.flowhyemin.extensionfilter.domain.customextension.dto.CustomExtensionCreateResponse;
-import com.flowhyemin.extensionfilter.domain.customextension.dto.CustomExtensionDeleteRequest;
-import com.flowhyemin.extensionfilter.domain.customextension.dto.CustomExtensionDeleteResponse;
+import com.flowhyemin.extensionfilter.domain.customextension.dto.*;
 import com.flowhyemin.extensionfilter.domain.customextension.entity.CustomExtension;
 import com.flowhyemin.extensionfilter.domain.customextension.exception.CustomExtensionException;
 import com.flowhyemin.extensionfilter.domain.customextension.repository.CustomExtensionRepository;
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -36,7 +34,9 @@ public class CustomExtensionService {
     }
     @Transactional
     public CustomExtensionDeleteResponse deleteCustomExtension(CustomExtensionDeleteRequest customExtensionDeleteRequest) {
-        CustomExtension customExtension = customExtensionDeleteRequest.toEntity();
+        CustomExtension customExtension = customExtensionRepository.findByName(customExtensionDeleteRequest.getName())
+            .orElseThrow(() -> new CustomExtensionException(ErrorCode.NONE_EXISTENCE_CUSTOM_EXTENSION)
+        );
         customExtensionRepository.deleteByName(customExtensionDeleteRequest.getName());
         return CustomExtensionDeleteResponse.fromEntity(customExtension);
     }
@@ -45,7 +45,10 @@ public class CustomExtensionService {
         customExtensionRepository.deleteAll();
     }
     @Transactional(readOnly = true)
-    public List<CustomExtension> findAllCustomExtension() {
-        return customExtensionRepository.findAll();
+    public List<CustomExtensionGetResponse> findAllCustomExtension() {
+        return customExtensionRepository.findAll().stream()
+            .map(CustomExtensionGetResponse::fromEntity)
+            .collect(Collectors.toList());
+
     }
 }

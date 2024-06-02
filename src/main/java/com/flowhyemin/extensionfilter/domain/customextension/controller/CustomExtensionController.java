@@ -25,7 +25,7 @@ public class CustomExtensionController {
 
     @DeleteMapping("/")
     @ResponseBody
-    public boolean deleteCustomExtension(@RequestBody CustomExtensionDeleteRequest customExtensionDeleteRequest) {
+    public boolean deleteCustomExtension(@Valid @RequestBody CustomExtensionDeleteRequest customExtensionDeleteRequest) {
         customExtensionService.deleteCustomExtension(customExtensionDeleteRequest);
         return true;
     }
