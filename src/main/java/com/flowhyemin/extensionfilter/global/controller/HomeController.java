@@ -1,5 +1,6 @@
 package com.flowhyemin.extensionfilter.global.controller;
 
+import com.flowhyemin.extensionfilter.domain.customextension.dto.CustomExtensionGetResponse;
 import com.flowhyemin.extensionfilter.domain.customextension.entity.CustomExtension;
 import com.flowhyemin.extensionfilter.domain.customextension.service.CustomExtensionService;
 import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionGetResponse;
@@ -20,7 +21,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         List<FixExtensionGetResponse> fixExtensionList = fixExtensionService.findAllFixExtension();
-        List<CustomExtension> customList = customExtensionService.findAllCustomExtension();
+        List<CustomExtensionGetResponse> customList = customExtensionService.findAllCustomExtension();
 
         model.addAttribute("fixList", fixExtensionList);
         model.addAttribute("customList", customList);
