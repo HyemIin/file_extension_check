@@ -29,7 +29,7 @@ public class FixExtensionService {
     }
     @Transactional
     public void checkFixExtension(FixExtensionCheckRequest fixExtensionCheckRequest) {
-        FixExtension fixExtension = fixExtensionRepository.findByName(fixExtensionCheckRequest.getName());
+        FixExtension fixExtension = fixExtensionRepository.findByName(fixExtensionCheckRequest.getName()).orElseThrow();
         fixExtension.updateFixExtension(fixExtensionCheckRequest.getIsChecked());
     }
     @Transactional

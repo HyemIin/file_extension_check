@@ -5,6 +5,7 @@ import com.flowhyemin.extensionfilter.domain.customextension.dto.CustomExtension
 import com.flowhyemin.extensionfilter.domain.customextension.dto.CustomExtensionDeleteRequest;
 import com.flowhyemin.extensionfilter.domain.customextension.dto.CustomExtensionDeleteResponse;
 import com.flowhyemin.extensionfilter.domain.customextension.service.CustomExtensionService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class CustomExtensionController {
 
     @PostMapping("/")
     @ResponseBody
-    public boolean createCustomExtension(@RequestBody CustomExtensionCreateRequest customExtensionCreateRequest) {
+    public boolean createCustomExtension(@Valid @RequestBody CustomExtensionCreateRequest customExtensionCreateRequest) {
         customExtensionService.createCustomExtension(customExtensionCreateRequest);
         return true;
     }

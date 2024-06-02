@@ -4,6 +4,7 @@ import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionCheckR
 import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionCreateRequest;
 import com.flowhyemin.extensionfilter.domain.fixextension.dto.FixExtensionDeleteRequest;
 import com.flowhyemin.extensionfilter.domain.fixextension.service.FixExtensionService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class FixExtensionController {
 
     @PostMapping("/")
     @ResponseBody
-    public boolean createFixExtension(@RequestBody FixExtensionCreateRequest fixExtensionCreateRequest) {
+    public boolean createFixExtension(@Valid @RequestBody FixExtensionCreateRequest fixExtensionCreateRequest) {
         fixExtensionService.createFixExtension(fixExtensionCreateRequest);
         return true;
     }

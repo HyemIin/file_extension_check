@@ -4,12 +4,13 @@ import com.flowhyemin.extensionfilter.domain.fixextension.entity.FixExtension;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface FixExtensionRepository extends JpaRepository<FixExtension,Long> {
 
     List<FixExtension> findAllByIsChecked(String ischecked);
 
-    FixExtension findByName(String name);
+    Optional<FixExtension> findByName(String name);
 
 
     void deleteByName(String name);
