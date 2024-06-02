@@ -1,19 +1,11 @@
 // 변수
-const fixExtensionItemButtons = document.querySelectorAll(
-  ".fix-extension-item .button"
-);
-const customExtensionInput = document.querySelector(
-  ".custom-extension-input-area > input"
-);
-const fixExtensionInput = document.querySelector(
-    ".fix-extension-input-area > input"
-);
+const fixExtensionItemButtons = document.querySelectorAll(".fix-extension-item .button");
+const customExtensionInput = document.querySelector(".custom-extension-input-area > input");
+const fixExtensionInput = document.querySelector(".fix-extension-input-area > input");
 const addButton = document.querySelector(".add-button");
 const addFixByButton = document.querySelector(".fix-extension-add-button");
 const deleteFixByButton = document.querySelector(".fix-extension-delete-button");
 let deleteButtons = document.querySelectorAll(".delete");
-
-
 const resetButtons = document.querySelectorAll(".reset-button");
 
 // 이벤트
@@ -192,26 +184,6 @@ function updateFixExtensionChecked(extensionName, isChecked) {
     },
     error: function () {
       console.log("updateFixExtensionChecked 요청 실패");
-    },
-  });
-}
-
-/**
- * 고정 확장자 초기화 요청
- */
-function resetFixedExtension() {
-  $.ajax({
-    url: "fixed/reset",
-    type: "POST",
-    success: function (result) {
-      if (result === true) {
-        console.log("고정 확장자 초기화 성공");
-      } else {
-        console.log("고정 확장자 초기화 실패");
-      }
-    },
-    error: function () {
-      console.log("고정 확장자 초기화 요청 실패");
     },
   });
 }
