@@ -1,75 +1,32 @@
 @import url(variable.css);
-@import url(./reset.css);
+@import url(reset.css);
 
-/* Components */
-.button {
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 6px 24px;
-
-  border: 1px solid var(--border);
-  border-radius: 4px;
-
-  transition: all 0.15s ease-in-out;
-}
-
-.custom-extension-item.button {
-  padding: 6px 8px;
-}
-
-.button.active {
-  display: inline-flex;
-
-  padding: 6px 24px;
-
-  border: 1px solid var(--border);
-  border-radius: 4px;
-
-  background-color: var(--primary);
-  color: var(--white);
-
-  box-shadow: var(--button-shadow);
-
-  transition: all 0.15s ease-in-out;
-}
-
-.button.active i,
-.button.active span {
-  color: var(--white);
-}
-
-/* Style */
 body {
   width: 100vw;
   height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;  /* default margin 삭제 */
+  padding: 0;  /*  default padding 삭제 */
+  box-sizing: border-box;
+  background-color: #f0f0f0;
 }
 
 .container {
   display: flex;
   flex-basis: 250px;
-  background: #e7f3e4;
+  background-color: #e7f3e4;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   padding: 30px var(--container-padding);
   border: 1px solid var(--border);
   border-radius: 8px;
 }
 
-.logo {
-  margin-bottom: 50px;
-}
-
 .fix-extension,
-.custom-extension,
-.file-upload {
+.custom-extension {
   width: 100%;
 }
 
@@ -110,6 +67,45 @@ body {
   transform: scaleX(-1);
 }
 
+/* 버튼 */
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 6px 24px;
+
+  border: 1px solid var(--border);
+  border-radius: 4px;
+
+  transition: all 0.15s ease-in-out;
+}
+
+.custom-extension-item.button {
+  padding: 6px 8px;
+}
+
+.button.active {
+  display: inline-flex;
+
+  padding: 6px 24px;
+
+  border: 1px solid var(--border);
+  border-radius: 4px;
+
+  background-color: var(--primary);
+  color: var(--white);
+
+  box-shadow: var(--button-shadow);
+
+  transition: all 0.15s ease-in-out;
+}
+
+.button.active i,
+.button.active span {
+  color: var(--white);
+}
+
 /* fix-extension */
 
 .fix-extension-list {
@@ -130,9 +126,7 @@ body {
 }
 .fix-extension-item > label:hover,
 .add-button:hover,
-.fix-extension-add-button:hover,
-.submit:hover,
-.submit.active {
+.fix-extension-add-button:hover {
   background-color: var(--primary);
   color: var(--white);
   box-shadow: var(--button-shadow);
@@ -156,12 +150,6 @@ body {
 
 .fix-extension-delete-button:hover > i {
   color: var(--white);
-}
-
-.submit:hover > img,
-.submit.active > img {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(344deg)
-    brightness(107%) contrast(101%);
 }
 
 /* custom-extension */
@@ -208,9 +196,13 @@ body {
 
   margin-bottom: 20px;
 }
+
+.custom-extension-input-area > input::placeholder {
+  color: var(--border);
+}
+
 .custom-extension-input-area > input {
   height: 40px;
-
   padding: 8px;
   padding-left: 24px;
   margin-right: 12px;
@@ -219,10 +211,6 @@ body {
   border-radius: 4px;
 
   flex-basis: 80%;
-}
-
-.custom-extension-input-area > input::placeholder {
-  color: var(--border);
 }
 
 .add-button {
@@ -269,7 +257,7 @@ body {
 
 .custom-extension-saved-area {
   width: 600px;
-  max-height: 300px;
+  max-height: 100px;
   overflow-y: auto;
 
   padding: 12px 24px;
