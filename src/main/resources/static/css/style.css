@@ -1,4 +1,4 @@
-@import url(./variables.css);
+@import url(variable.css);
 @import url(./reset.css);
 
 /* Components */
@@ -52,6 +52,8 @@ body {
 
 .container {
   display: flex;
+  flex-basis: 250px;
+  background: #e7f3e4;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -112,17 +114,19 @@ body {
 
 .fix-extension-list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 
 .fix-extension-item:not(:last-child) {
-  margin-right: 12px;
+  margin-right: 10px;
 }
 
 .fix-extension-item > label {
   /*cursor: pointer;*/
-  margin-right: 15px;
+  margin-right: 10px;
+  flex-basis: calc(10% - 10px); /* 리스트 항목 너비를 조정합니다. */
 }
 .fix-extension-item > label:hover,
 .add-button:hover,
@@ -291,79 +295,3 @@ body {
   margin-right: 12px;
   margin-bottom: 12px;
 }
-
-/* file-upload */
-
-/*.file-upload-area {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*}*/
-
-/*#file {*/
-/*  display: none;*/
-/*}*/
-
-/*.file {*/
-/*  flex-basis: 70%;*/
-
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-
-/*  height: 48px;*/
-/*  padding: 8px 20px;*/
-/*  margin-right: 12px;*/
-/*  border: 1px dashed var(--border);*/
-
-/*  cursor: pointer;*/
-/*}*/
-
-/*.file > i {*/
-/*  font-size: 14px;*/
-/*  margin-right: 16px;*/
-/*}*/
-
-/*.submit {*/
-/*  font-size: 14px;*/
-/*  flex-basis: 30%;*/
-/*  height: 48px;*/
-/*  border: 1px solid var(--border);*/
-/*}*/
-
-/*.submit > img {*/
-/*  margin-left: 10px;*/
-/*}*/
-
-/*.info {*/
-/*  width: 100%;*/
-/*  padding: 20px 0;*/
-
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  left: 0;*/
-
-/*  background: rgb(144, 0, 254);*/
-/*  background: linear-gradient(*/
-/*    90deg,*/
-/*    rgba(144, 0, 254, 1) 0%,*/
-/*    rgba(211, 0, 171, 1) 50%,*/
-/*    rgba(41, 144, 209, 1) 100%*/
-/*  );*/
-/*}*/
-
-/*.info > a > p {*/
-/*  color: var(--white);*/
-/*}*/
-
-/*.info > a > p > span {*/
-/*  color: #ffe600;*/
-/*  font-weight: 700;*/
-/*  text-decoration: underline;*/
-/*  margin-left: 12px;*/
-/*}*/
-/*}*/
