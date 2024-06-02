@@ -18,9 +18,9 @@ public class FixExtension {
     private String name;
     @Column(nullable = false)
     @ColumnDefault("false")
-    private String isChecked;
+    private Boolean isChecked;
 
-    public void updateFixExtensionCheckBox(String isChecked) {
+    public void updateFixExtensionCheckBox(Boolean isChecked) {
         this.isChecked = isChecked;
     }
 }
