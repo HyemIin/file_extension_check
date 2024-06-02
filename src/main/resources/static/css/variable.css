@@ -1,0 +1,18 @@
+:root {
+  /* colors */
+  --dark: #030303;
+  --border: #7e7a7a;
+  --white: #ffffff;
+  --placeholder: #b7b7b7;
+  --primary: #207c0b;
+  --delete: #ce2525;
+
+  /* shadow */
+  --button-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+
+  /* size */
+  --container-size: 768px;
+
+  /* padding */
+  --container-padding: 60px;
+}
