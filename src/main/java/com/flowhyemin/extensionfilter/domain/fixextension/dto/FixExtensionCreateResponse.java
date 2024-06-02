@@ -10,7 +10,7 @@ import lombok.*;
 public class FixExtensionCreateResponse {
     private Long id;
     private String name;
-    private Boolean isChecked;
+    private String isChecked;
 
     public static FixExtensionCreateResponse fromEntity(FixExtension fixExtension) {
         return FixExtensionCreateResponse.builder()
