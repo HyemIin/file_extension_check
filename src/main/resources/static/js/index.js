@@ -52,7 +52,7 @@ addFixByButton.addEventListener("click", function () {
   } else if (fixExtensionList.some(item => item.textContent === newFixName)) {
     alert("이미 존재하는 확장자입니다.");
   } else if (!extensionValidateCheck(newFixName)) {
-    alert("영어 소문자만 입력해주세요. (영어 대문자, 한글, 공백, 특수문자 입력 불가)");
+    alert("영어 대소문자만 입력해주세요. (영어 대문자, 한글, 공백, 특수문자 입력 불가)");
   } else {
     addFixExtension(newFixName);
   }
@@ -73,7 +73,7 @@ addButton.addEventListener("click", function () {
   } else if (customExtensionList.some(item => item.textContent === newCustomName)) {
     alert("이미 존재하는 확장자입니다.");
   } else if (!extensionValidateCheck(newCustomName)) {
-    alert("영어 소문자만 입력해주세요. (영어 대문자, 한글, 공백, 특수문자 입력 불가)");
+    alert("영어 대소문자만 입력해주세요. (영어 대문자, 한글, 공백, 특수문자 입력 불가)");
   } else {
     addCustomExtension(newCustomName);
   }
