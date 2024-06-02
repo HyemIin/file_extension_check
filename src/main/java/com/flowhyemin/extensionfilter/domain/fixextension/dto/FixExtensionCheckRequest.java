@@ -17,7 +17,7 @@ public class FixExtensionCheckRequest {
     @Pattern(regexp = "^[a-zA-Z]+$", message = "영어 소문자만 입력해주세요.")
     private String name;
     @NotNull
-    private String isChecked;
+    private Boolean isChecked;
 
     public FixExtension toEntity() {
         return FixExtension.builder()

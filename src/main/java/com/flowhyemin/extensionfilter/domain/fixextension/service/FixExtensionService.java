@@ -42,6 +42,9 @@ public class FixExtensionService {
     public FixExtensionDeleteResponse deleteFixExtension(FixExtensionDeleteRequest fixExtensionDeleteRequest) {
         FixExtension fixExtension = fixExtensionRepository.findByName(fixExtensionDeleteRequest.getName())
             .orElseThrow(() -> new FixExtensionException(ErrorCode.NONE_EXISTENCE_FIX_EXTENSION));
+        if (Boolean.TRUE.equals(fixExtension.getIsChecked())) {
+            throw new FixExtensionException(ErrorCode.CHECKED_FIX_EXTENSION);
+        }
         fixExtensionRepository.delete(fixExtension);
         return FixExtensionDeleteResponse.fromEntity(fixExtension);
     }
