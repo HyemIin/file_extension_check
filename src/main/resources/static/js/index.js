@@ -109,7 +109,6 @@ deleteFixByButton.addEventListener("click", function () {
   const fixExtensionList = Array.from(document.querySelectorAll(".fix-extension-item .fix-label"));
   const fixExtensionExists = fixExtensionList.some(item => item.textContent === fixExtensionName);
   const checkedItem = fixExtensionList.find(item => item.textContent === fixExtensionName);
-  const checkbox = checkedItem.previousElementSibling;
 
   // 입력 타입 체크
   if (fixExtensionName) {
@@ -121,6 +120,7 @@ deleteFixByButton.addEventListener("click", function () {
     fixExtensionInput.value = "";
     return false;
   }
+  const checkbox = checkedItem.previousElementSibling;
   // 확장자 checkbox가 check된 상태인 경우
   if (checkbox.checked) {
     alert("확장자를 선택 해제 해주세요.");
