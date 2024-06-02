@@ -36,6 +36,7 @@
 ## 📝 프로젝트 문서 산출물
 - 프로젝트 간트차트(FLOW 활용)
   ![image](https://github.com/HyemIin/file_extension_check/assets/114489245/32e58494-3fce-4987-881a-bec3a8687b1b)
+  > [초대링크](https://flow.team/Invitation/dlke_03ONv)
 - [프로젝트 정의서](https://hyem5019.notion.site/5669916c39d942b0912ceaa4d94ca15b?pvs=4)
 - [요구사항 명세서](https://hyem5019.notion.site/75ee1a4d9a31467ba19756129ef3818a?pvs=4)
 - [API 명세서](https://hyem5019.notion.site/API-8704db26f5ab4f31a14cad745ad0b702?pvs=4)
