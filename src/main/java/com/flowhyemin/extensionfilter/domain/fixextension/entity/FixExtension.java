@@ -20,7 +20,7 @@ public class FixExtension {
     @ColumnDefault("false")
     private String isChecked;
 
-    public void updateFixExtension(String isChecked) {
+    public void updateFixExtensionCheckBox(String isChecked) {
         this.isChecked = isChecked;
     }
 }

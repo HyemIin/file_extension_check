@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CustomExtensionCreateRequest {
     @Size(min = 1,max = 20,message = "크기가 1에서 20 사이여야 합니다.")
-    @Pattern(regexp = "^[a-z]+$", message = "영어 소문자만 입력해주세요.")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "영어 소문자만 입력해주세요.")
     private String name;
 
     public CustomExtension toEntity() {

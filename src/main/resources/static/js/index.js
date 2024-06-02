@@ -292,7 +292,7 @@ function addFixExtension(newFixName) {
  * @returns boolean
  */
 function extensionValidateCheck(name) {
-  const regex = /^[a-z]+$/;
+  const regex = /^[a-zA-Z]+$/;
 
   if (regex.test(name)) {
     return true;

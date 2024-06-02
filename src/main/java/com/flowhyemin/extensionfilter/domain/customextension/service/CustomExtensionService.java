@@ -23,7 +23,7 @@ public class CustomExtensionService {
     public CustomExtensionCreateResponse createCustomExtension(CustomExtensionCreateRequest customExtensionCreateRequest) {
         if (customExtensionRepository.findByName(customExtensionCreateRequest.getName()).isPresent()
             || fixExtensionRepository.findByName(customExtensionCreateRequest.getName()).isPresent()) {
-            throw new CustomExtensionException(ErrorCode.DUPLICATED_CUSTOM_EXTENSION);
+            throw new CustomExtensionException(ErrorCode.DUPLICATED_EXTENSION);
         }
         if (customExtensionRepository.findAll().size() >= 200) {
             throw new CustomExtensionException(ErrorCode.EXCEEDED_CUSTOM_EXTENSION_REGISTRAION);
@@ -37,7 +37,7 @@ public class CustomExtensionService {
         CustomExtension customExtension = customExtensionRepository.findByName(customExtensionDeleteRequest.getName())
             .orElseThrow(() -> new CustomExtensionException(ErrorCode.NONE_EXISTENCE_CUSTOM_EXTENSION)
         );
-        customExtensionRepository.deleteByName(customExtensionDeleteRequest.getName());
+        customExtensionRepository.delete(customExtension);
         return CustomExtensionDeleteResponse.fromEntity(customExtension);
     }
     @Transactional
