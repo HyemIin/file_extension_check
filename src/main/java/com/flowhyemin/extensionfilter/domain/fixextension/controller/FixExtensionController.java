@@ -23,14 +23,14 @@ public class FixExtensionController {
     }
     @PutMapping("/check/")
     @ResponseBody
-    public boolean checkFixExtension(@RequestBody FixExtensionCheckRequest fixExtensionCheckRequest) {
+    public boolean checkFixExtension(@Valid @RequestBody FixExtensionCheckRequest fixExtensionCheckRequest) {
         fixExtensionService.checkFixExtension(fixExtensionCheckRequest);
         return true;
     }
 
     @DeleteMapping("/")
     @ResponseBody
-    public boolean deleteFixExtension(@RequestBody FixExtensionDeleteRequest fixExtensionDeleteRequest) {
+    public boolean deleteFixExtension(@Valid @RequestBody FixExtensionDeleteRequest fixExtensionDeleteRequest) {
         fixExtensionService.deleteFixExtension(fixExtensionDeleteRequest);
         return true;
     }

@@ -8,14 +8,7 @@ import java.util.Optional;
 
 public interface FixExtensionRepository extends JpaRepository<FixExtension,Long> {
 
-    List<FixExtension> findAllByIsChecked(String ischecked);
-
     Optional<FixExtension> findByName(String name);
-
-
-    void deleteByName(String name);
-
-
     List<FixExtension> findAllByOrderByIdAsc();
 }
 

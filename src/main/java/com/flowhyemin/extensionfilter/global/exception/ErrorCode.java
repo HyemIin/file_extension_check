@@ -6,11 +6,16 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCode {
-    //커스텀 확장자
-    DUPLICATED_CUSTOM_EXTENSION(1001, "이미 등록된 확장자입니다."),
-    EXCEEDED_CUSTOM_EXTENSION_REGISTRAION(1002,"등록 가능한 커스텀 확장자 수를 초과했습니다."),
-    NONE_EXISTENCE_CUSTOM_EXTENSION(1003, "입력한 커스텀 확장자는 등록되어 있지 않습니다.")
+    // 공통
+    DUPLICATED_EXTENSION(1001, "이미 등록된 확장자입니다."),
 
+    //커스텀 확장자
+    EXCEEDED_CUSTOM_EXTENSION_REGISTRAION(1002,"등록 가능한 커스텀 확장자 수를 초과했습니다."),
+    NONE_EXISTENCE_CUSTOM_EXTENSION(1003, "입력한 커스텀 확장자는 등록되어 있지 않습니다."),
+
+    //고정 확장자
+    EXCEEDED_FIX_EXTENSION_REGISTRAION(1004,"등록 가능한 고정 확장자 수를 초과했습니다."),
+    NONE_EXISTENCE_FIX_EXTENSION(1005, "입력한 고정 확장자는 등록되어 있지 않습니다.")
     ;
 
     private final Integer code;
