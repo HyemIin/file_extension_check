@@ -1,5 +1,4 @@
-// Variables
-
+// 변수
 const fixExtensionItemButtons = document.querySelectorAll(
   ".fix-extension-item .button"
 );
@@ -17,8 +16,7 @@ let deleteButtons = document.querySelectorAll(".delete");
 
 const resetButtons = document.querySelectorAll(".reset-button");
 
-// Events
-
+// 이벤트
 /**
  * 고정 확장자 체크박스 클릭 이벤트
  * */
@@ -109,20 +107,26 @@ customExtensionInput.addEventListener("keyup", (event) => {
 deleteFixByButton.addEventListener("click", function () {
   const fixExtensionName = fixExtensionInput.value.trim();;
   const fixExtensionList = Array.from(document.querySelectorAll(".fix-extension-item .fix-label"));
+  const fixExtensionExists = fixExtensionList.some(item => item.textContent === fixExtensionName);
+  const checkedItem = fixExtensionList.find(item => item.textContent === fixExtensionName);
+  const checkbox = checkedItem.previousElementSibling;
 
   // 입력 타입 체크
   if (fixExtensionName) {
     extensionValidateCheck(fixExtensionName);
   }
-
   // 없는 확장자를 삭제하려는 경우
-  const extensionExists = fixExtensionList.some(item => item.textContent === fixExtensionName);
-  if (!extensionExists) {
+  if (!fixExtensionExists) {
     alert("고정 확장자 목록에 없는 확장자입니다.");
     fixExtensionInput.value = "";
     return false;
   }
-
+  // 확장자 checkbox가 check된 상태인 경우
+  if (checkbox.checked) {
+    alert("확장자를 선택 해제 해주세요.");
+    fixExtensionInput.value = "";
+    return false;
+  }
   // 확장자 삭제 최종 확인
   if (confirm("입력하신 고정 확장자를 리스트에서 삭제하시겠습니까?")) {
     deleteFixExtension(fixExtensionName);
@@ -187,7 +191,7 @@ function updateFixExtensionChecked(extensionName, isChecked) {
       }
     },
     error: function () {
-      console.log("updateExtensionChecked 요청 실패");
+      console.log("updateFixExtensionChecked 요청 실패");
     },
   });
 }

@@ -44,32 +44,29 @@
 body {
   width: 100vw;
   height: 100vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;  /* default margin 삭제 */
+  padding: 0;  /*  default padding 삭제 */
+  box-sizing: border-box;
+  background-color: #f0f0f0;
 }
 
 .container {
   display: flex;
   flex-basis: 250px;
-  background: #e7f3e4;
+  background-color: #e7f3e4;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   padding: 30px var(--container-padding);
   border: 1px solid var(--border);
   border-radius: 8px;
 }
 
-.logo {
-  margin-bottom: 50px;
-}
-
 .fix-extension,
-.custom-extension,
-.file-upload {
+.custom-extension {
   width: 100%;
 }
 
@@ -130,9 +127,7 @@ body {
 }
 .fix-extension-item > label:hover,
 .add-button:hover,
-.fix-extension-add-button:hover,
-.submit:hover,
-.submit.active {
+.fix-extension-add-button:hover {
   background-color: var(--primary);
   color: var(--white);
   box-shadow: var(--button-shadow);
@@ -156,12 +151,6 @@ body {
 
 .fix-extension-delete-button:hover > i {
   color: var(--white);
-}
-
-.submit:hover > img,
-.submit.active > img {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(344deg)
-    brightness(107%) contrast(101%);
 }
 
 /* custom-extension */
