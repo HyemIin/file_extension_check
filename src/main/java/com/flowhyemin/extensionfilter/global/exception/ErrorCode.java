@@ -16,7 +16,8 @@ public enum ErrorCode {
     //고정 확장자
     EXCEEDED_FIX_EXTENSION_REGISTRAION(1004,"등록 가능한 고정 확장자 수를 초과했습니다."),
     NONE_EXISTENCE_FIX_EXTENSION(1005, "입력한 고정 확장자는 등록되어 있지 않습니다."),
-    CHECKED_FIX_EXTENSION(1006,"고정 확장자는 UNCHECK 상태에서 삭제해야합니다.")
+    CHECKED_FIX_EXTENSION(1006,"고정 확장자는 UNCHECK 상태에서 삭제해야합니다."),
+    INVALID_CHECK_TYPE(1007,"isChecked 값은 true 또는 false만 가능합니다.")
     ;
 
     private final Integer code;

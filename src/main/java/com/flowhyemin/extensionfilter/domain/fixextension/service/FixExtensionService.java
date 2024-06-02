@@ -35,6 +35,10 @@ public class FixExtensionService {
     public FixExtensionCheckResponse checkFixExtension(FixExtensionCheckRequest fixExtensionCheckRequest) {
         FixExtension fixExtension = fixExtensionRepository.findByName(fixExtensionCheckRequest.getName())
             .orElseThrow(() -> new FixExtensionException(ErrorCode.NONE_EXISTENCE_FIX_EXTENSION));
+        String isChecked = fixExtensionCheckRequest.getIsChecked();
+        if (!"true".equals(isChecked) && !"false".equals(isChecked)) {
+            throw new FixExtensionException(ErrorCode.INVALID_CHECK_TYPE);
+        }
         fixExtension.updateFixExtensionCheckBox(fixExtensionCheckRequest.getIsChecked());
         return FixExtensionCheckResponse.fromEntity(fixExtension);
     }
